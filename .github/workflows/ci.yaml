@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - '*'
+    - '!gh-pages'
+    tags:
+    - '*'
+  pull_request:
+    branches:
+    - '*'
+    - '!gh-pages'
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - uses: oursky/action-check-dockerignore@v1
+      with:
+        build-context: .
